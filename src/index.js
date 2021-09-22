@@ -1,4 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from './components/App';
+import {BrowserRouter} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<h1>Its working!</h1>, document.getElementById("root"));
+ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById("root"));
