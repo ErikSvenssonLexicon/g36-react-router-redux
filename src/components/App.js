@@ -1,22 +1,19 @@
-import LoginForm from "./login/LoginForm";
 import Patients from "./patients/Patients";
 import Premises from "./premises/Premises";
 import WelcomePage from "./WelcomePage";
 import { Route, Switch } from "react-router";
 import PatientDetail from "./patients/PatientDetails";
 import Card from "./ui/Card";
+import PatientForm from "./patients/PatientForm";
 
 const App = (props) => {
   return (
     <Switch>
       <Route path="/welcome" exact>
         <div className="container">
-          <Card>
-            <LoginForm />
-            <WelcomePage />
-          </Card>
+          <WelcomePage />        
         </div>
-      </Route>
+      </Route>      
       <Route path="/patients" exact>
         <div className="container">
           <Card>
@@ -27,11 +24,11 @@ const App = (props) => {
       <Route path="/patients/add" exact>
         <div className="container">
           <Card>
-            <h1>New Patient form page</h1>
+            <PatientForm />
           </Card>
         </div>
       </Route>
-      <Route path="/patients/:patientId">
+      <Route path="/patients/:pnr">
         <div className="container">
           <Card>
             <PatientDetail />
