@@ -12,17 +12,16 @@ const LoginForm = (props) => {
     const [pnr, setPnr] = useState("");
     const history = useHistory();
 
+    useEffect(()=>{
+      dispatch(setError(null))
+    },[dispatch])
 
     useEffect(()=>{
-        if(currentPatient){
+        if(currentPatient && !error){
             
             history.push("/patients/"+currentPatient.pnr)
-        }
-        return () =>{
-            dispatch(setError(null));
-            setPnr("");    
-        }
-    },[currentPatient, history, dispatch])
+        }        
+    },[currentPatient, history, dispatch, error])
 
     const handleFormSubmit = (event) => {
         event.preventDefault();        

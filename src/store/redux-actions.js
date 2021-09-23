@@ -31,19 +31,20 @@ export const findPatientByPnr = createAsyncThunk(
 
 export const addNewPatient = createAsyncThunk(
   "currentPatient/addNewPatient",  
-  async (patient, { dispatch }) => {
+  async ({patient}, thunkAPI) => {
   
   try {
-    dispatch(setIsLoading(true));
+    thunkAPI.dispatch(setIsLoading(true));
     const response = await postNewPatient(patient);
+    console.log(response)
     if (response.status && response.status === 400) {
-      dispatch(setError(response));
+      thunkAPI.dispatch(setError(response));
     }
 
-    dispatch(setCurrentPatient(response));
+    thunkAPI.dispatch(setCurrentPatient(response));
   } catch (error) {
     console.log("There was an error");
   } finally {
-    dispatch(setIsLoading(false));
+    thunkAPI.dispatch(setIsLoading(false));
   }
 });

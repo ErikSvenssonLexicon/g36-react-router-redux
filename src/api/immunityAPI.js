@@ -7,13 +7,18 @@ export const findPatientByPersonalNumber = async (pnr) =>{
         return response.data;
     }catch(err){
         return err.response.data;
-    }
+    }    
 }
 
-export const postNewPatient = async (patient) => {
+export const postNewPatient = async ({pnr, firstName, lastName, birthDate, gender, contactInfo}) => {
     try{
         const response = await axios.post(`http://localhost:8080/api/v1/patients`, {
-            patient    
+            pnr: pnr,
+            firstName: firstName,
+            lastName: lastName,
+            birthDate: birthDate,
+            gender: gender,
+            contactInfo: contactInfo            
         });
         return response.data;
     }catch(err){
