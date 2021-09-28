@@ -1,10 +1,12 @@
-import Patients from "./patients/Patients";
 import Premises from "./premises/Premises";
 import WelcomePage from "./WelcomePage";
 import { Route, Switch, Redirect } from "react-router";
 import PatientDetail from "./patients/PatientDetails";
 import Card from "./ui/Card";
 import PatientForm from "./patients/PatientForm";
+import BookingsSearch from "./bookings/BookingsSearch";
+import Bookings from "./bookings/Bookings";
+import BookingDetail from "./bookings/BookingDetail";
 
 const App = (props) => {
   return (
@@ -20,11 +22,18 @@ const App = (props) => {
       <Route path="/" exact>
         <Redirect to="/welcome" />
       </Route>
-      <Route path="/patients" exact>
+      <Route path="/bookings" exact>
         <div className="container">
           <Card>
-            <Patients />
+            <BookingsSearch />            
           </Card>
+        </div>
+      </Route>
+      <Route path="/bookings/:id">
+        <div className="container">
+            <Card>
+              <BookingDetail />
+            </Card>
         </div>
       </Route>
       <Route path="/patients/add" exact>
